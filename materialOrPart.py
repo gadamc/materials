@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 from couchdbkit import Server, Database
 import sys
-
+  
+theServer = sys.argv[1]
+theDbName = sys.argv[2]
 #______________
 def updateDocEntry(doc, name):
   dd = datetime.datetime.utcnow()
@@ -14,8 +16,8 @@ def updateDocEntry(doc, name):
   doc['doc_entries'].append(entry)
   return doc
   
-s = Server('https://edwdbuser:3000kgd@edwdbik.fzk.de:6984')
-db = s['materials']
+s = Server(theServer)
+db = s[theDbName]
 
 vr = db.all_docs()
 
